@@ -9,7 +9,7 @@ const PORT = 3001;
 const JWT_SECRET = 'your_jwt_secret'; // Cambia esto por una clave segura
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: '*', credentials: true }));
 app.use(express.json());
 
 // Cargar el certificado CA para la conexión SSL
@@ -364,7 +364,11 @@ app.get('/api/products/:id', (req, res) => {
 
 
 // Iniciar el servidor localmente solo si no está en un entorno de servidorless
-app.use(cors({ origin: '*', credentials: true }));
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  });
+}
 
 
 // Exportar la aplicación para Vercel
