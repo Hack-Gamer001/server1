@@ -364,11 +364,8 @@ app.get('/api/products/:id', (req, res) => {
 
 
 // Iniciar el servidor localmente solo si no está en un entorno de servidorless
-if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
-  });
-}
+app.use(cors({ origin: '*', credentials: true }));
+
 
 // Exportar la aplicación para Vercel
 export default app;
