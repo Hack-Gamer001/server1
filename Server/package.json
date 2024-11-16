@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "start-server": "node Server/Server.js",
     "start-react": "npm run dev",
-    "start": "npm run start-server"
+    "start": "node Server.js"
   },
   "proxy": "http://localhost/backend-proyecto/public",
   "dependencies": {
